@@ -1,1 +1,60 @@
-// put code here
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+@mixin for-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.watch {
+  position: relative;
+  width: 80vmin;
+  height: 80vmin;
+  border: 6px black;
+  border-style: dotted;
+  border-radius: 50%;
+
+  &::after {
+    background: orange;
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+  }
+
+  &__hand-minute {
+    width: 7px;
+    height: 50%;
+    background-color: green;
+    animation: rotate 60s linear infinite;
+    @include for-hand;
+  }
+
+  &__hand-second {
+    width: 12px;
+    height: 25%;
+    background-color: blue;
+    animation: rotate 5s linear infinite;
+    @include for-hand;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
